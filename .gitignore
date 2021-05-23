@@ -1,0 +1,7 @@
+# OS-specific
+desktop.ini
+.DS_Store
+
+# Python-specific
+*.pyc
+__pycache__/
