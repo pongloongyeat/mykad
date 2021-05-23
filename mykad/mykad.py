@@ -60,3 +60,18 @@ class MyKad:
         self.nrd_num = self.mykad_num[8:11]
         self.gender_num = self.mykad_num[-1]
 
+    def get_unformatted(self):
+        """Returns the unformatted MyKad string (i.e. just numbers, without '-')
+
+        :return: The unformatted MyKad number
+        :rtype: str
+        """
+        return self.mykad_num.replace('-', '')
+
+    def get_formatted(self):
+        """Returns the formatted MyKad string (with '-')
+
+        :return: The formatted MyKad number
+        :rtype: str
+        """
+        return f'{self.birthyear_num}{self.birthmonth_num}{self.birthday_num}-{self.birthplace_num}-{self.nrd_num}{self.gender_num}'
