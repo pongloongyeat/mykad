@@ -75,3 +75,16 @@ class MyKad:
         :rtype: str
         """
         return f'{self.birthyear_num}{self.birthmonth_num}{self.birthday_num}-{self.birthplace_num}-{self.nrd_num}{self.gender_num}'
+
+    def get_birthyear(self):
+        """Returns the birthyear of the MyKad holder.
+
+        :return: The birthyear in YYYY format
+        :rtype: str
+        """
+
+        # MyKads started being issued in the year 1949
+        if int(self.birthyear_num) >= 49:
+            return f'19{self.birthyear_num}'
+
+        return f'20{self.birthyear_num}'
