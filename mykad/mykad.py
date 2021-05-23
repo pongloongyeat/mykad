@@ -88,3 +88,27 @@ class MyKad:
             return f'19{self.birthyear_num}'
 
         return f'20{self.birthyear_num}'
+
+    def get_birthmonth(self):
+        """Returns the birthmonth of the MyKad holder.
+
+        :return A birthmonth in English
+        :rtype str
+        """
+
+        month_dict = {
+            '01': 'January',
+            '02': 'February',
+            '03': 'March',
+            '04': 'April',
+            '05': 'May',
+            '06': 'June',
+            '07': 'July',
+            '08': 'August',
+            '09': 'September',
+            '10': 'October',
+            '11': 'November',
+            '12': 'December',
+        }
+
+        return month_dict[self.birthmonth_num]
