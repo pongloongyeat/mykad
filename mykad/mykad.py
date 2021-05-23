@@ -38,3 +38,25 @@ def is_mykad_valid(mykad_num):
 
     return True
 
+
+class MyKad:
+    """The base MyKad class.
+
+    :param mykad_num: The MyKad number. This can contain numbers and '-'
+    :type mykad_num: str, int
+    """
+    def __init__(self, mykad_num):
+        if (is_mykad_valid(mykad_num)):
+            self.mykad_num = mykad_num
+        else:
+            raise ValueError('MyKad number is not valid')
+
+        # If MyKad is valid we should extract the information out of it
+        # YYMMDD-PB-###G
+        self.birthyear_num = self.mykad_num[0:2]
+        self.birthmonth_num = self.mykad_num[2:4]
+        self.birthday_num = self.mykad_num[4:6]
+        self.birthplace_num = self.mykad_num[6:8]
+        self.nrd_num = self.mykad_num[8:11]
+        self.gender_num = self.mykad_num[-1]
+
