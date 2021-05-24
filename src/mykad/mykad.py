@@ -74,7 +74,7 @@ class MyKad:
         :return: The formatted MyKad number
         :rtype: str
         """
-        return f'{self.birthyear_num}{self.birthmonth_num}{self.birthday_num}-{self.birthplace_num}-{self.nrd_num}{self.gender_num}'
+        return f'{self.birth_year_num}{self.birth_month_num}{self.birth_day_num}-{self.birthplace_num}-{self.nrd_num}{self.gender_num}'
 
     def get_birth_year(self):
         """Returns the birth year of the MyKad holder.
