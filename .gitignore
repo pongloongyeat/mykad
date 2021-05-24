@@ -5,3 +5,8 @@ desktop.ini
 # Python-specific
 *.pyc
 __pycache__/
+
+# Ignore build files
+build/
+dist/
+*.egg-info
