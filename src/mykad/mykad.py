@@ -112,3 +112,21 @@ class MyKad:
         }
 
         return month_dict[self.birth_month_num]
+
+    def is_male(self):
+        return int(self.gender_num) % 2 != 0
+
+    def is_female(self):
+        return int(self.gender_num) % 2 == 0
+
+    def get_gender(self):
+        """Returns the gender of the MyKad holder.
+
+        :return Either "Male" or "Female"
+        :rtype str
+        """
+
+        if self.is_male():
+            return "Male"
+        else:
+            return "Female"
