@@ -41,7 +41,16 @@ class MyKad:
     def get_birth_year(self):
         """Returns the birth year of the MyKad holder.
 
-        :return: The birth year in YY format.
+        :return: The birth year in YY format. For YYYY format, use `get_pretty_birth_year()` instead
+        :rtype: str
+        """
+
+        return self.birth_year
+
+    def get_pretty_birth_year(self):
+        """Returns the birth year of the MyKad holder.
+
+        :return: The birth year in YYYY format
         :rtype: str
         """
 
@@ -54,7 +63,16 @@ class MyKad:
     def get_birth_month(self):
         """Returns the birth month of the MyKad holder.
 
-        :return A birth month in English
+        :return The birth month in digits. To get the birth month in the English language, use `get_pretty_birth_month()` instead
+        :rtype str
+        """
+
+        return self.birth_month
+
+    def get_pretty_birth_month(self):
+        """Returns the birth month of the MyKad holder.
+
+        :return The birth month in English.
         :rtype str
         """
 
@@ -80,6 +98,15 @@ class MyKad:
 
     def is_female(self):
         return int(self.gender_code) % 2 == 0
+
+    def get_gender_code(self):
+        """Returns the gender code of the MyKad holder.
+
+        :return The gender code of the MyKad holder. For a proper "Male" or "Female" string, use `get_gender()` instead
+        :rtype str
+        """
+
+        return self.gender_code
 
     def get_gender(self):
         """Returns the gender of the MyKad holder.
