@@ -40,7 +40,7 @@ class MyKad:
         return f'{self.birth_year}{self.birth_month}{self.birth_day}-{self.birthplace_code}-{self.special_nrd_num}{self.gender_code}'
 
     def get_birth_year(self):
-        """Returns the birth year of the MyKad holder in YY format. For YYYY format, use `get_pretty_birth_year()` instead
+        """Returns the birthyear of the MyKad holder in YY format. For YYYY format, use `get_pretty_birth_year()` instead
 
         :return: The birth year in YY format
         :rtype: str
@@ -48,7 +48,7 @@ class MyKad:
         return self.birth_year
 
     def get_pretty_birth_year(self):
-        """Returns the birth year of the MyKad holder in YYYY format.
+        """Returns the birthyear of the MyKad holder in YYYY format.
 
         :return: The birth year in YYYY format
         :rtype: str
@@ -68,7 +68,7 @@ class MyKad:
         return self.birth_month
 
     def get_pretty_birth_month(self):
-        """Returns the birth month of the MyKad holder.
+        """Returns the birth month of the MyKad holder in English.
 
         :return The birth month in English
         :rtype str
