@@ -39,21 +39,19 @@ class MyKad:
         return f'{self.birth_year}{self.birth_month}{self.birth_day}-{self.birthplace_code}-{self.special_nrd_num}{self.gender_code}'
 
     def get_birth_year(self):
-        """Returns the birth year of the MyKad holder.
+        """Returns the birth year of the MyKad holder in YY format.
 
         :return: The birth year in YY format. For YYYY format, use `get_pretty_birth_year()` instead
         :rtype: str
         """
-
         return self.birth_year
 
     def get_pretty_birth_year(self):
-        """Returns the birth year of the MyKad holder.
+        """Returns the birth year of the MyKad holder in YYYY format.
 
         :return: The birth year in YYYY format
         :rtype: str
         """
-
         # MyKads started being issued in the year 1949
         if int(self.birth_year) >= 49:
             return f'19{self.birth_year}'
@@ -61,21 +59,19 @@ class MyKad:
         return f'20{self.birth_year}'
 
     def get_birth_month(self):
-        """Returns the birth month of the MyKad holder.
+        """Returns the birth month of the MyKad holder in MM format.
 
-        :return The birth month in digits. To get the birth month in the English language, use `get_pretty_birth_month()` instead
+        :return The birth month in MM format. To get the birth month in English, use `get_pretty_birth_month()` instead
         :rtype str
         """
-
         return self.birth_month
 
     def get_pretty_birth_month(self):
         """Returns the birth month of the MyKad holder.
 
-        :return The birth month in English.
+        :return The birth month in English
         :rtype str
         """
-
         month_dict = {
             '01': 'January',
             '02': 'February',
@@ -93,10 +89,36 @@ class MyKad:
 
         return month_dict[self.birth_month]
 
+    def get_birth_day(self):
+        """Returns the day of birth of the MyKad holder.
+
+        :return The day of birth of the MyKad holder in DD format. To get the exact day in English, use `get_pretty_birth_day()` instead
+        :rtype str
+        """
+        return self.birth_day
+
+    def get_pretty_birth_day(self):
+        """Returns the day of birth of the MyKad holder.
+
+        :return The day of birth of the MyKad holder in English
+        :rtype str
+        """
+        return None
+
     def is_male(self):
+        """Checks if the MyKad holder is a male.
+
+        :return True if male, False otherwise
+        :rtype bool
+        """
         return int(self.gender_code) % 2 != 0
 
     def is_female(self):
+        """Checks if the MyKad holder is a female.
+
+        :return True if female, False otherwise
+        :rtype bool
+        """
         return int(self.gender_code) % 2 == 0
 
     def get_gender_code(self):
