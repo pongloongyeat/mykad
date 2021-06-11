@@ -40,9 +40,9 @@ class MyKad:
         return f'{self.birth_year}{self.birth_month}{self.birth_day}-{self.birthplace_code}-{self.special_nrd_num}{self.gender_code}'
 
     def get_birth_year(self):
-        """Returns the birth year of the MyKad holder in YY format.
+        """Returns the birth year of the MyKad holder in YY format. For YYYY format, use `get_pretty_birth_year()` instead
 
-        :return: The birth year in YY format. For YYYY format, use `get_pretty_birth_year()` instead
+        :return: The birth year in YY format
         :rtype: str
         """
         return self.birth_year
@@ -60,9 +60,9 @@ class MyKad:
         return f'20{self.birth_year}'
 
     def get_birth_month(self):
-        """Returns the birth month of the MyKad holder in MM format.
+        """Returns the birth month of the MyKad holder in MM format. To get the birth month in English, use `get_pretty_birth_month()` instead
 
-        :return The birth month in MM format. To get the birth month in English, use `get_pretty_birth_month()` instead
+        :return The birth month in MM format
         :rtype str
         """
         return self.birth_month
@@ -91,9 +91,9 @@ class MyKad:
         return month_dict[self.birth_month]
 
     def get_birth_day(self):
-        """Returns the day of birth of the MyKad holder.
+        """Returns the day of birth of the MyKad holder in DD format. To get the exact day in English, use `get_pretty_birth_day()` instead.
 
-        :return The day of birth of the MyKad holder in DD format. To get the exact day in English, use `get_pretty_birth_day()` instead
+        :return The day of birth of the MyKad holder in DD format
         :rtype str
         """
         return self.birth_day
