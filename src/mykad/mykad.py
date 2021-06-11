@@ -1,4 +1,5 @@
 from .utils import is_mykad_valid
+from datetime import datetime
 
 
 class MyKad:
@@ -103,7 +104,7 @@ class MyKad:
         :return The day of birth of the MyKad holder in English
         :rtype str
         """
-        return None
+        return datetime.fromisoformat(f'{self.get_pretty_birth_year()}-{self.get_birth_month()}-{self.get_birth_day()}').strftime('%A')
 
     def is_male(self):
         """Checks if the MyKad holder is a male.
