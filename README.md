@@ -2,6 +2,8 @@
 
 A Python package to check if a MyKad number is valid and gets information such as the birthdate, state of birth, etc.
 
+**Warning**: This is still in pre-release so expect API breakages between versions.
+
 ## The `MyKad` class
 
 ```python
