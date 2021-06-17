@@ -19,7 +19,7 @@ The following methods are included in the `MyKad` class:
 | `get_unformatted()`        | Gets the unformatted MyKad string.                      | `'990111431234'`     |
 | `get_formatted()`          | Gets the formatted MyKad string.                        | `'990111-43-1234'`   |
 | `get_birth_year()`         | Gets the birthyear of the MyKad holder in YY format.    | `'99'`               |
-| `get_pretty_birth_year()`  | Gets the birthyear of the MyKad holder in YYYY format.  | `'1998'`             |
+| `get_pretty_birth_year()`  | Gets the birthyear of the MyKad holder in YYYY format.  | `'1999'`             |
 | `get_birth_month()`        | Gets the birth month of the MyKad holder in MM format.  | `'01'`               |
 | `get_pretty_birth_month()` | Gets the birth month of the MyKad holder in English.    | `'January'`          |
 | `get_birth_day()`          | Gets the day of birth of the MyKad holder in DD format. | `'11'`               |
