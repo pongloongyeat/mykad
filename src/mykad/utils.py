@@ -63,4 +63,4 @@ def get_state_abbreviation(state):
         if state.lower() == key:
             return val
 
-    return None
+    raise ValueError(f'unknown state {state}')
