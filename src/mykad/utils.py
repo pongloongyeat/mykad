@@ -39,6 +39,14 @@ def is_mykad_valid(mykad_num):
     return True
 
 def get_state_abbreviation(state):
+    """Gets the state abbreviation.
+
+    :param state: The name of the state. This can be lower or upper-case
+    :type state: str
+
+    :return: State abbreviation (i.e. SGR, KUL, etc.)
+    :rtype: str
+    """
     abbreviation_dict = {
         'johor': 'JHR',
         'kedah': 'KDH',
