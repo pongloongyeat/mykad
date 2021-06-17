@@ -37,3 +37,30 @@ def is_mykad_valid(mykad_num):
         return False
 
     return True
+
+def get_state_abbreviation(state):
+    abbreviation_dict = {
+        'johor': 'JHR',
+        'kedah': 'KDH',
+        'kelantan': 'KTN',
+        'malacca': 'MLK',
+        'negeri sembilan': 'NSN',
+        'pahang': 'PHG',
+        'penang': 'PNG',
+        'perak': 'PRK',
+        'perlis': 'PLS',
+        'sabah': 'SBH',
+        'sarawak': 'SWK',
+        'selangor': 'SGR',
+        'terengganu': 'TGR',
+        'kuala lumpur': 'KUL',
+        'labuan': 'LBN',
+        'putrajaya': 'PJY'
+    }
+
+    for key, val in abbreviation_dict.items():
+        # Make it lowercase to better generalise it
+        if state.lower() == key:
+            return val
+
+    return None
