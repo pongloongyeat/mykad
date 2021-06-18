@@ -12,7 +12,7 @@ class MyKad:
         if (is_mykad_valid(mykad_num)):
             self.mykad_num = mykad_num
         else:
-            raise ValueError('MyKad number is not valid')
+            raise ValueError(f'MyKad number {mykad_num} is not valid')
 
         # If MyKad is valid we should extract the information out of it
         # YYMMDD-PB-###G
