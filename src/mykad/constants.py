@@ -14,5 +14,5 @@ state_dict = {
     'Sarawak': [13, 50, 51, 52 ,53],
     'Federal Territory of Kuala Lumpur': [14, 54, 55, 56, 57],
     'Federal Territory of Labuan': [15, 58],
-    'Federal Territory of Putrajaya': [16, 59],
+    'Federal Territory of Putrajaya': [16],
 }
