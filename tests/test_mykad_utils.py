@@ -1,9 +1,8 @@
+import pytest
 from src.mykad.utils import get_state_abbreviation
 
 
 def test_mykad_utils_get_state_abbreviation():
-    """Generates a random valid MyKad instance
-    and checks if it gets it right."""
     assert(get_state_abbreviation('johor') == 'JHR')
     assert(get_state_abbreviation('kedah') == 'KDH')
     assert(get_state_abbreviation('kelantan') == 'KTN')
@@ -20,3 +19,5 @@ def test_mykad_utils_get_state_abbreviation():
     assert(get_state_abbreviation('kuala lumpur') == 'KUL')
     assert(get_state_abbreviation('labuan') == 'LBN')
     assert(get_state_abbreviation('putrajaya') == 'PJY')
+    with pytest.raises(ValueError):
+        assert(get_state_abbreviation('negerisembilan'))
