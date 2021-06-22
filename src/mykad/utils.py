@@ -1,3 +1,6 @@
+from .constants import abbreviation_dict
+
+
 def is_mykad_valid(mykad_num):
     """Checks if a MyKad number is valid.
 
@@ -37,3 +40,19 @@ def is_mykad_valid(mykad_num):
         return False
 
     return True
+
+def get_state_abbreviation(state):
+    """Gets the state abbreviation.
+
+    :param state: The name of the state. This can be lower or upper-case
+    :type state: str
+
+    :return: State abbreviation (i.e. SGR, KUL, etc.)
+    :rtype: str
+    """
+    for key, val in abbreviation_dict.items():
+        # Make it lowercase to better generalise it
+        if state.lower() == key.lower():
+            return val
+
+    raise ValueError(f'unknown state {state}')

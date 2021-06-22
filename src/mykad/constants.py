@@ -16,3 +16,22 @@ state_dict = {
     'Federal Territory of Labuan': [15, 58],
     'Federal Territory of Putrajaya': [16],
 }
+
+abbreviation_dict = {
+    'Johor': 'JHR',
+    'Kedah': 'KDH',
+    'Kelantan': 'KTN',
+    'Malacca': 'MLK',
+    'Negeri Sembilan': 'NSN',
+    'Pahang': 'PHG',
+    'Penang': 'PNG',
+    'Perak': 'PRK',
+    'Perlis': 'PLS',
+    'Sabah': 'SBH',
+    'Sarawak': 'SWK',
+    'Selangor': 'SGR',
+    'Terengganu': 'TGR',
+    'Kuala Lumpur': 'KUL',
+    'Labuan': 'LBN',
+    'Putrajaya': 'PJY'
+}

@@ -5,8 +5,12 @@ desktop.ini
 # Python-specific
 *.pyc
 __pycache__/
+.pytest_cache/
 
 # Ignore build files
 build/
 dist/
 *.egg-info
+
+# Editor-specific
+.vscode/
