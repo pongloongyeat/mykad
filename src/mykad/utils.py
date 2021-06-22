@@ -1,3 +1,6 @@
+from .constants import abbreviation_dict
+
+
 def is_mykad_valid(mykad_num):
     """Checks if a MyKad number is valid.
 
@@ -47,28 +50,9 @@ def get_state_abbreviation(state):
     :return: State abbreviation (i.e. SGR, KUL, etc.)
     :rtype: str
     """
-    abbreviation_dict = {
-        'johor': 'JHR',
-        'kedah': 'KDH',
-        'kelantan': 'KTN',
-        'malacca': 'MLK',
-        'negeri sembilan': 'NSN',
-        'pahang': 'PHG',
-        'penang': 'PNG',
-        'perak': 'PRK',
-        'perlis': 'PLS',
-        'sabah': 'SBH',
-        'sarawak': 'SWK',
-        'selangor': 'SGR',
-        'terengganu': 'TGR',
-        'kuala lumpur': 'KUL',
-        'labuan': 'LBN',
-        'putrajaya': 'PJY'
-    }
-
     for key, val in abbreviation_dict.items():
         # Make it lowercase to better generalise it
-        if state.lower() == key:
+        if state.lower() == key.lower():
             return val
 
     raise ValueError(f'unknown state {state}')
