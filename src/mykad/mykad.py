@@ -10,7 +10,7 @@ class MyKad:
     """
     def __init__(self, mykad_num):
         if (is_mykad_valid(mykad_num)):
-            self.mykad_num = mykad_num
+            self.mykad_num = mykad_num.replace('-', '')
         else:
             raise ValueError(f'MyKad number {mykad_num} is not valid')
 
@@ -81,7 +81,7 @@ class MyKad:
         :return: The unformatted MyKad number
         :rtype: str
         """
-        return self.mykad_num.replace('-', '')
+        return self.mykad_num
 
     def get_formatted(self):
         """Returns the formatted MyKad string (with '-')
