@@ -26,20 +26,9 @@ def is_mykad_valid(mykad_num):
         return False
 
     # Check if PB (place of birth) code is valid
-    if (mykad_num[6:8] == '00' or
-        mykad_num[6:8] == '17' or
-        mykad_num[6:8] == '18' or
-        mykad_num[6:8] == '19' or
-        mykad_num[6:8] == '20' or
-        mykad_num[6:8] == '69' or
-        mykad_num[6:8] == '70' or
-        mykad_num[6:8] == '73' or
-        mykad_num[6:8] == '80' or
-        mykad_num[6:8] == '81' or
-        mykad_num[6:8] == '94' or
-        mykad_num[6:8] == '95' or
-        mykad_num[6:8] == '96' or
-        mykad_num[6:8] == '97'):
+    try:
+        get_birthplace(mykad_num[6:8])
+    except ValueError:
         return False
 
     return True
