@@ -14,7 +14,10 @@ def is_mykad_valid(mykad_num):
 
     mykad_num = str(mykad_num)
 
-    # MyKad should be 12 digits long
+    if '-' in mykad_num:
+        mykad_num = mykad_num.replace('-', '')
+
+    # MyKad should be correct length
     if len(mykad_num) != 12:
         return False
 
