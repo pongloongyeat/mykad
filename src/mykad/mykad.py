@@ -1,5 +1,4 @@
-from .constants import state_dict
-from .utils import is_mykad_valid
+from .utils import is_mykad_valid, get_birthplace
 from datetime import datetime
 
 
@@ -15,14 +14,66 @@ class MyKad:
         else:
             raise ValueError(f'MyKad number {mykad_num} is not valid')
 
-        # If MyKad is valid we should extract the information out of it
-        # YYMMDD-PB-###G
-        self.birth_year = self.mykad_num[0:2]
-        self.birth_month = self.mykad_num[2:4]
-        self.birth_day = self.mykad_num[4:6]
-        self.birthplace_code = self.mykad_num[6:8]
-        self.special_nrd_num = self.mykad_num[8:11]
-        self.gender_code = self.mykad_num[-1]
+    @property
+    def birthdate_yymmdd(self):
+        return self.mykad_num[0:6]
+
+    @property
+    def birthplace_code(self):
+        return self.mykad_num[6:8]
+
+    @property
+    def special_nrd_num(self):
+        return self.mykad_num[8:11]
+
+    @property
+    def gender_code(self):
+        return self.mykad_num[11]
+
+    @property
+    def birthdate(self):
+        """Returns the datetime instance corresponding to this
+        MyKad holder.
+
+        :return: The datetime instance
+        :rtype: datetime
+        """
+        birthdate = datetime.strptime(self.birthdate_yymmdd, "%y%m%d")
+
+        # Make sure dates past current time are 19xx and not 20xx.
+        # This is mostly due to the limitations of ISO 8601:2000
+        # where a date '570620' in YYMMDD format could be initialised
+        # as 20th June 2057 rather than 20th June 1957.
+        # I don't see any workaround to this unless the Malaysian
+        # gov switches to a YYYYMMDD format.
+        if birthdate.year > datetime.now().year:
+            # Reconstruct datetime instance with a different year (i.e. 19xx instead of 20xx)
+            birthdate = datetime(year=int('19' + str(birthdate.year)[2:4]), month=birthdate.month, day=birthdate.day)
+
+        return birthdate
+
+    @property
+    def birth_year(self):
+        return self.birthdate.year
+
+    @property
+    def birth_month(self):
+        return self.birthdate.month
+
+    @property
+    def day_of_birth(self):
+        return self.birthdate.day
+
+    @property
+    def birthplace(self):
+        return get_birthplace(self.birthplace_code)
+
+    @property
+    def gender(self):
+        if self.is_male():
+            return "Male"
+        else:
+            return "Female"
 
     def get_unformatted(self):
         """Returns the unformatted MyKad string (i.e. just numbers, without '-')
@@ -34,98 +85,10 @@ class MyKad:
 
     def get_formatted(self):
         """Returns the formatted MyKad string (with '-')
-
-        :return: The formatted MyKad number
+                :return: The formatted MyKad number
         :rtype: str
         """
-        return f'{self.birth_year}{self.birth_month}{self.birth_day}-{self.birthplace_code}-{self.special_nrd_num}{self.gender_code}'
-
-    def get_birth_year(self):
-        """Returns the birthyear of the MyKad holder in YY format. For YYYY format, use `get_pretty_birth_year()` instead
-
-        :return: The birth year in YY format
-        :rtype: str
-        """
-        return self.birth_year
-
-    def get_pretty_birth_year(self):
-        """Returns the birthyear of the MyKad holder in YYYY format.
-
-        :return: The birth year in YYYY format
-        :rtype: str
-        """
-        # MyKads started being issued in the year 1949
-        if int(self.birth_year) >= 49:
-            return f'19{self.birth_year}'
-
-        return f'20{self.birth_year}'
-
-    def get_birth_month(self):
-        """Returns the birth month of the MyKad holder in MM format. To get the birth month in English, use `get_pretty_birth_month()` instead
-
-        :return The birth month in MM format
-        :rtype str
-        """
-        return self.birth_month
-
-    def get_pretty_birth_month(self):
-        """Returns the birth month of the MyKad holder in English.
-
-        :return The birth month in English
-        :rtype str
-        """
-        month_dict = {
-            '01': 'January',
-            '02': 'February',
-            '03': 'March',
-            '04': 'April',
-            '05': 'May',
-            '06': 'June',
-            '07': 'July',
-            '08': 'August',
-            '09': 'September',
-            '10': 'October',
-            '11': 'November',
-            '12': 'December',
-        }
-
-        return month_dict[self.birth_month]
-
-    def get_birth_day(self):
-        """Returns the day of birth of the MyKad holder in DD format. To get the exact day in English, use `get_pretty_birth_day()` instead.
-
-        :return The day of birth of the MyKad holder in DD format
-        :rtype str
-        """
-        return self.birth_day
-
-    def get_pretty_birth_day(self):
-        """Returns the day of birth of the MyKad holder.
-
-        :return The day of birth of the MyKad holder in English
-        :rtype str
-        """
-        return datetime.fromisoformat(f'{self.get_pretty_birth_year()}-{self.get_birth_month()}-{self.get_birth_day()}').strftime('%A')
-
-    def get_birthplace_code(self):
-        """Returns the birthplace code of the MyKad holder. To get the birthplace (either a Malaysian state or a country abroad) of the MyKad holder, use `get_birthplace()` instead.
-
-        :return The birthplace code of the MyKad holder
-        :rtype str
-        """
-        return self.birthplace_code
-
-    def get_birthplace(self):
-        """Returns the birthplace of the MyKad holder.
-
-        :return The birthplace of the MyKad holder
-        :rtype str
-        """
-        for key, val in state_dict.items():
-            if int(self.birthplace_code) in val:
-                return key
-
-        return 'Outside Malaysia'
+        return f'{self.birthdate.strftime("%y%m%d")}-{self.birthplace_code}-{self.special_nrd_num}{self.gender_code}'
 
     def is_male(self):
         """Checks if the MyKad holder is a male.
@@ -142,24 +105,3 @@ class MyKad:
         :rtype bool
         """
         return int(self.gender_code) % 2 == 0
-
-    def get_gender_code(self):
-        """Returns the gender code of the MyKad holder.
-
-        :return The gender code of the MyKad holder. For a proper "Male" or "Female" string, use `get_gender()` instead
-        :rtype str
-        """
-
-        return self.gender_code
-
-    def get_gender(self):
-        """Returns the gender of the MyKad holder.
-
-        :return Either "Male" or "Female"
-        :rtype str
-        """
-
-        if self.is_male():
-            return "Male"
-        else:
-            return "Female"

@@ -1,4 +1,4 @@
-from .constants import abbreviation_dict
+from .constants import abbreviation_dict, state_dict
 
 
 def is_mykad_valid(mykad_num):
@@ -40,6 +40,34 @@ def is_mykad_valid(mykad_num):
         return False
 
     return True
+
+def get_birthplace(birthplace_code):
+    """Returns the birthplace of the MyKad holder.
+
+    :return The birthplace code of the MyKad holder (i.e. 'BP' in YYMMDD-BP-###G)
+    :rtype str, int
+    """
+    if (int(birthplace_code) == 0 or
+        int(birthplace_code) == 17 or
+        int(birthplace_code) == 18 or
+        int(birthplace_code) == 19 or
+        int(birthplace_code) == 20 or
+        int(birthplace_code) == 69 or
+        int(birthplace_code) == 70 or
+        int(birthplace_code) == 73 or
+        int(birthplace_code) == 80 or
+        int(birthplace_code) == 81 or
+        int(birthplace_code) == 94 or
+        int(birthplace_code) == 95 or
+        int(birthplace_code) == 96 or
+        int(birthplace_code) == 97):
+        raise ValueError(f'code {birthplace_code} is an invalid birthplace code')
+
+    for key, val in state_dict.items():
+        if int(birthplace_code) in val:
+            return key
+
+    return 'Outside Malaysia'
 
 def get_state_abbreviation(state):
     """Gets the state abbreviation.

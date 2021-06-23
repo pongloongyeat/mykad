@@ -10,8 +10,8 @@ def test_mykad_class():
     random_mykad_num, random_date, random_state, random_gender = generate_random_valid_mykad()
     mykad = MyKad(random_mykad_num)
 
-    assert mykad.get_pretty_birth_year() == random_date.strftime('%Y')
-    assert mykad.get_pretty_birth_month() == random_date.strftime('%B')
-    assert mykad.get_pretty_birth_day() == random_date.strftime('%A')
-    assert mykad.get_birthplace() == random_state
-    assert mykad.get_gender() == random_gender
+    assert mykad.birth_year == random_date.year
+    assert mykad.birth_month == random_date.month
+    assert mykad.day_of_birth == random_date.day
+    assert mykad.birthplace == random_state
+    assert mykad.gender == random_gender
