@@ -1,5 +1,5 @@
 import pytest
-from src.mykad.mykad import MyKad
+from src.mykad import MyKad
 from .utils import generate_random_valid_mykad
 
 
