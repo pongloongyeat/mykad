@@ -34,6 +34,7 @@ The following methods are included in the `MyKad` class:
 
 The following utility functions are included under `mykad.utils`:
 
-| Method            | Comment                                                      | Example return value |
-|-------------------|--------------------------------------------------------------|----------------------|
-| `is_mykad_valid`  | Checks if a MyKad is valid.                                  | `False`              |
+| Method                    | Comment                                                      | Example return value |
+|---------------------------|--------------------------------------------------------------|----------------------|
+| `is_mykad_valid`          | Checks if a MyKad is valid.                                  | `False`              |
+| `get_state_abbreviation`  | Gets the state abbreviation                                  | `'SGR'`              |
