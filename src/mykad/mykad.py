@@ -14,6 +14,9 @@ class MyKad:
         else:
             raise ValueError(f'MyKad number {mykad_num} is not valid')
 
+    def __str__(self):
+        return f'{self.mykad_num}'
+
     @property
     def birthdate_yymmdd(self):
         return self.mykad_num[0:6]
