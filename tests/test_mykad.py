@@ -20,7 +20,7 @@ def test_mykad_class():
 def test_mykad_class_formatted():
     """Same as above but with a formatted
     MyKad number (i.e. YYMMDD-BP-###G aka
-    with the '-' character."""
+    with the '-' character)."""
     random_mykad_num, random_date, random_state, random_gender = generate_random_valid_mykad()
 
     random_mykad_num = f'{random_mykad_num[0:6]}-{random_mykad_num[6:8]}-{random_mykad_num[8:12]}'
