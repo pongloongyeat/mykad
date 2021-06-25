@@ -23,7 +23,7 @@ The following methods are included in the `MyKad` class:
 
 The following attributes are included in the `MyKad` class:
 
-| Attributes                 | Comment                                                                  |
+| Attribute                  | Comment                                                                  |
 |----------------------------|--------------------------------------------------------------------------|
 | `birthdate`                | Gets the datetime instance corresponding to the MyKad holder's birthdate.|
 | `birth_year`               | Gets the birth year of the MyKad holder.                                 |
